@@ -6,6 +6,7 @@ const Home = () => {
     const [Age, UpdateAge] = useState(18);
     const [Articles, UpdateArticle] = useState(null);
     const [isLoading, updateIsLoading] = useState(true);
+    const [Error, updateError] = useState(null);
 
     const deleteArticle = (id) => {
         const newArticles = Articles.filter(article => article.id !== id);
@@ -23,12 +24,19 @@ const Home = () => {
         {
         fetch('http://localhost:8000/articles')
         .then(res => {
+            if (!res.ok)
+            {
+                throw Error('couldnt fetch the required resource');
+            }
             return res.json();
         })
         .then(data => {
             console.log(data);
             UpdateArticle(data);
             updateIsLoading(false);
+        })
+        .catch(error => {
+            updateError(error.message);
         })
         }, 1000)
     }, []);
@@ -47,7 +55,8 @@ const Home = () => {
                 }
             }>TestButton</button>
             <button onClick={TestEvent}>EventButton</button>
-            {isLoading && <div>Loading...</div>}
+            {isLoading && <p>{Error}</p>}
+            {isLoading && <h2>Loading...</h2>}
             {Articles && <Article articles={Articles} title={"All Articles:- "} deleteArticle={deleteArticle}/>}
             {Articles && <Article articles={Articles.filter((article) => article.author === "Defence Front")} title={"Defence Front Articles:- "}/>}
         </div>
