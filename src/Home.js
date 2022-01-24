@@ -5,6 +5,7 @@ const Home = () => {
     const [name, UpdateName] = useState('Mario');
     const [Age, UpdateAge] = useState(18);
     const [Articles, UpdateArticle] = useState(null);
+    const [isLoading, updateIsLoading] = useState(true);
 
     const deleteArticle = (id) => {
         const newArticles = Articles.filter(article => article.id !== id);
@@ -18,14 +19,18 @@ const Home = () => {
     }
 
     useEffect(() => {
+        setTimeout(() =>
+        {
         fetch('http://localhost:8000/articles')
         .then(res => {
             return res.json();
         })
         .then(data => {
             console.log(data);
-            UpdateArticle(data)
+            UpdateArticle(data);
+            updateIsLoading(false);
         })
+        }, 1000)
     }, []);
     
     const TestEvent = (e) => {
@@ -42,6 +47,7 @@ const Home = () => {
                 }
             }>TestButton</button>
             <button onClick={TestEvent}>EventButton</button>
+            {isLoading && <div>Loading...</div>}
             {Articles && <Article articles={Articles} title={"All Articles:- "} deleteArticle={deleteArticle}/>}
             {Articles && <Article articles={Articles.filter((article) => article.author === "Defence Front")} title={"Defence Front Articles:- "}/>}
         </div>
