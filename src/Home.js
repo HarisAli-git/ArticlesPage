@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Article from "./Article";
 
 const Home = () => {
     const [name, UpdateName] = useState('Mario');
@@ -29,12 +30,7 @@ const Home = () => {
                 }
             }>TestButton</button>
             <button onClick={TestEvent}>EventButton</button>
-            <div>{Articles.map((article) => (
-                <div className="article-desc" key={article.id}>
-                    <h1 className="title">{article.title}</h1>
-                    <p className="author"> Written By: {article.author}</p>
-                </div>
-            ))}</div>
+            <Article articles={Articles} title={"List of Articles:- "}/>
         </div>
     );
 }
