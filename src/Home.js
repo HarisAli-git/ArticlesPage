@@ -7,7 +7,8 @@ const Home = () => {
     const [Articles, ShowArticles] = useState([
         {title: "Cars", body: "VolksWagon....", author: "NationalGeographic", id: 1},
         {title: "PAF", body: "CAC/PAC JF-17 Thunder....", author: "Defence Front", id: 2},
-        {title: "Aeroplanes", body: "Boeing 777 300ER....", author: "Aerospace Indus.", id: 3},
+        {title: "War & Peace", body: "Terrorist Insurgence....", author: "Defence Front", id: 3},
+        {title: "Aeroplanes", body: "Boeing 777 300ER....", author: "Aerospace Indus.", id: 4},
     ]);
 
     const clickEvent = (name, e) => {
@@ -30,7 +31,8 @@ const Home = () => {
                 }
             }>TestButton</button>
             <button onClick={TestEvent}>EventButton</button>
-            <Article articles={Articles} title={"List of Articles:- "}/>
+            <Article articles={Articles} title={"All Articles:- "}/>
+            <Article articles={Articles.filter((article) => article.author === "Defence Front")} title={"Defence Front Articles:- "}/>
         </div>
     );
 }
