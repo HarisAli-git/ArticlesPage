@@ -31,12 +31,13 @@ const Home = () => {
             return res.json();
         })
         .then(data => {
-            console.log(data);
             UpdateArticle(data);
             updateIsLoading(false);
+            updateError(null);
         })
         .catch(error => {
             updateError(error.message);
+            updateIsLoading(false);
         })
         }, 1000)
     }, []);
@@ -55,7 +56,7 @@ const Home = () => {
                 }
             }>TestButton</button>
             <button onClick={TestEvent}>EventButton</button>
-            {isLoading && <p>{Error}</p>}
+            {Error && <p>{Error}</p>}
             {isLoading && <h2>Loading...</h2>}
             {Articles && <Article articles={Articles} title={"All Articles:- "} deleteArticle={deleteArticle}/>}
             {Articles && <Article articles={Articles.filter((article) => article.author === "Defence Front")} title={"Defence Front Articles:- "}/>}
