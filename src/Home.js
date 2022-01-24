@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Article from "./Article";
 
 const Home = () => {
@@ -22,6 +22,11 @@ const Home = () => {
         UpdateAge(22);
     }
 
+    useEffect(() => {
+        console.log('DOM has been rendered!');
+        console.log(name);
+    }, [name]);
+    
     const TestEvent = (e) => {
         console.log("Button is Hit by: ", e);
     }
