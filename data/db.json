@@ -1,0 +1,8 @@
+{
+    "articles": [
+    {"title": "Cars", "body": "VolksWagon....", "author": "NationalGeographic", "id": 1},
+    {"title": "PAF", "body": "CAC/PAC JF-17 Thunder....", "author": "Defence Front", "id": 2},
+    {"title": "War & Peace", "body": "Terrorist Insurgence....", "author": "Defence Front", "id": 3},
+    {"title": "Aeroplanes", "body": "Boeing 777 300ER....", "author": "Aerospace Indus.", "id": 4}
+    ]
+}
