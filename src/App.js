@@ -12,9 +12,6 @@ function App() {
         <Navbar></Navbar>
         <h1>{title}</h1>
         <Home />
-        <p>Likes {likes} times</p>
-        <p>Random Number: {Math.random() * 12}</p>
-        <a href={link}>Click Me</a>
       </div>
     </div>
   );
