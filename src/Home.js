@@ -4,12 +4,17 @@ import Article from "./Article";
 const Home = () => {
     const [name, UpdateName] = useState('Mario');
     const [Age, UpdateAge] = useState(18);
-    const [Articles, ShowArticles] = useState([
+    const [Articles, UpdateArticle] = useState([
         {title: "Cars", body: "VolksWagon....", author: "NationalGeographic", id: 1},
         {title: "PAF", body: "CAC/PAC JF-17 Thunder....", author: "Defence Front", id: 2},
         {title: "War & Peace", body: "Terrorist Insurgence....", author: "Defence Front", id: 3},
         {title: "Aeroplanes", body: "Boeing 777 300ER....", author: "Aerospace Indus.", id: 4},
     ]);
+
+    const deleteArticle = (id) => {
+        const newArticles = Articles.filter(article => article.id !== id);
+        UpdateArticle(newArticles);
+    }
 
     const clickEvent = (name, e) => {
         console.log("Button is Hit by: ", name, e);
@@ -31,7 +36,7 @@ const Home = () => {
                 }
             }>TestButton</button>
             <button onClick={TestEvent}>EventButton</button>
-            <Article articles={Articles} title={"All Articles:- "}/>
+            <Article articles={Articles} title={"All Articles:- "} deleteArticle={deleteArticle}/>
             <Article articles={Articles.filter((article) => article.author === "Defence Front")} title={"Defence Front Articles:- "}/>
         </div>
     );
