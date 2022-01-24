@@ -1,4 +1,4 @@
-const Article = ({articles, title, deleteArticle}) => {
+const Article = ({articles, title}) => {
 
     return (
         <div>
@@ -8,7 +8,6 @@ const Article = ({articles, title, deleteArticle}) => {
             <div className="article-desc" key={article.id}>
                 <h2 className="title">{article.title}</h2>
                 <p className="author"> Written By: {article.author}</p>
-                <button onClick={() => deleteArticle(article.id)}>Delete Me!</button>
             </div>
         ))}</div>
         </div>
