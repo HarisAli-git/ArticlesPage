@@ -7,9 +7,12 @@ const useCustFetch = (url) => {
     const [error, updateError] = useState(null);
 
     useEffect(() => {
+
+        const abortControl = new AbortController();
+
         setTimeout(() =>
         {
-        fetch(url)
+        fetch(url, {signal: abortControl.signal})
         .then(res => {
             if (!res.ok)
             {
@@ -23,10 +26,19 @@ const useCustFetch = (url) => {
             updateError(null);
         })
         .catch(error => {
+        if (error.name === 'AbortError')
+        {
+            console.log('fetchaborted!');
+        }
+        else{
             updateError(error.message);
             updateIsLoading(false);
+        }
         })
-        }, 500)
+        }, 1000)
+
+        return () => abortControl.abort();
+
     }, [url]);
 
     return {data, isLoading, error};
