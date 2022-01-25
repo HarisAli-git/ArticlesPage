@@ -49,3 +49,7 @@ padding: 20px;
   color: #f1356d;
   margin-bottom: 8px;
 }
+
+.article-desc a{
+  text-decoration: none;
+}
