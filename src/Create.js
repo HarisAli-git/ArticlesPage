@@ -5,10 +5,15 @@ const Create = () => {
     const [body, setBody] = useState(' ');
     const [author, setAuthor] = useState(' ');
 
+    const submitForm = (e) => {
+        e.preventDefault();
+        const articleOBJ = {title, body, author};
+    } 
+    
     return ( 
         <div className="create">
             <h1><strong>Add a new Article</strong></h1>
-            <form>
+            <form onSubmit={submitForm}>
                 <label>Title: </label>
                 <input
                     type = "text"
