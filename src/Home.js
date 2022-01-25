@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Article from "./Article";
 import useCustFetch from "./useCustFetch";
 
