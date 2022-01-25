@@ -1,10 +1,12 @@
 import { useState} from "react";
+import { useHistory } from 'react-router-dom'; 
 
 const Create = () => {
     const [title, setTitle] = useState(' ');
     const [body, setBody] = useState(' ');
     const [author, setAuthor] = useState(' ');
     const [isPending, setIsPending] = useState(false);
+    const history = useHistory();
 
     const submitForm = (e) => {
         e.preventDefault();
@@ -17,8 +19,9 @@ const Create = () => {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(articleOBJ)
         }).then(() => {
-            setIsPending(false);
+            setIsPending(false)
             console.log('Article Added!')
+            history.push('/')
         })
     } 
     
